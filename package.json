@@ -1,0 +1,26 @@
+{
+    "name": "alda-vscode",
+    "displayName": "Alda-VsCode",
+    "description": "A music programming language for musicians",
+    "version": "0.0.1",
+    "publisher": "abhi18av",
+    "engines": {
+        "vscode": "^1.5.0"
+    },
+    "categories": [
+        "Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "alda",
+            "aliases": ["Alda", "alda"],
+            "extensions": [".alda"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "alda",
+            "scopeName": "source.alda",
+            "path": "./syntaxes/alda.tmLanguage.json"
+        }]
+    }
+}
