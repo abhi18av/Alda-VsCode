@@ -1,32 +1,125 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "Alda",
-	"patterns": [
-		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
-		}
-	],
-	"repository": {
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.alda",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
-		},
-		"strings": {
-			"name": "string.quoted.double.alda",
-			"begin": "\"",
-			"end": "\"",
-			"patterns": [
-				{
-					"name": "constant.character.escape.alda",
-					"match": "\\\\."
-				}
-			]
-		}
-	},
-	"scopeName": "source.alda"
+  "scopeName": "source.alda",
+  "fileTypes": [
+    "alda"
+  ],
+  "name": "Alda",
+  "patterns": [
+    {
+      "match": "(?x) ^([a-zA-Z]{2}[\\w\\-+\\'()]*) ((?:\\s*\\/\\s*[a-zA-Z]{2}[\\w\\-+\\'()]*)*) (?:\\s*(\\\"[a-zA-Z]{2}[\\w\\-+\\'()]*\\\"))? \\s*:",
+      "captures": {
+        "1": {
+          "name": "constant.language.instrument.alda"
+        },
+        "2": {
+          "name": "constant.language.instrument.alda"
+        },
+        "3": {
+          "name": "storage.type.nickname.alda"
+        }
+      },
+      "name": "meta.part.call.alda"
+    },
+    {
+      "match": "^\\s*(V\\d+):",
+      "captures": {
+        "1": {
+          "name": "entity.other.inherited-class.voice.alda"
+        }
+      }
+    },
+    {
+      "match": "#.*$",
+      "name": "comment.line.number-sign.alda"
+    },
+    {
+      "match": "\\|",
+      "name": "entity.name.function.pipe.measure.alda"
+    },
+    {
+      "begin": "\\(comment\\b",
+      "end": "\\)",
+      "name": "comment.block.inline.alda"
+    },
+    {
+      "match": "%[a-zA-Z]{2}[\\w\\-+\\'()]*",
+      "name": "entity.name.function.marker.alda"
+    },
+    {
+      "match": "@[a-zA-Z]{2}[\\w\\-+\\'()]*",
+      "name": "entity.name.function.at-marker.alda"
+    },
+    {
+      "match": "\\b(o\\d+)\\b",
+      "name": "keyword.operator.octave-change.alda"
+    },
+    {
+      "match": "[><]",
+      "name": "keyword.operator.octave-shift.alda"
+    },
+    {
+      "match": "\\*\\s*\\d+",
+      "name": "keyword.operator.repeat.alda"
+    },
+    {
+      "match": "(?x) [~.] | (?<=[cdefgab\\+\\-\\}~])\\d+(?:s|ms)? | r\\d*(?:s|ms)?",
+      "name": "string.quoted.operator.timing.alda"
+    },
+    {
+      "match": "(?<=[cdefgab])([+\\-]+|\\=)",
+      "name": "variable.parameter.operator.pitch.alda"
+    },
+    {
+      "match": "/",
+      "name": "constant.numeric.subchord.alda"
+    },
+    {
+      "begin": "(\\{)",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.section.embedded.cram.alda"
+        }
+      },
+      "end": "(\\})",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.section.embedded.cram.alda"
+        }
+      },
+      "patterns": [
+        {
+          "include": "$self"
+        }
+      ]
+    },
+    {
+      "begin": "(\\[)",
+      "beginCaptures": {
+        "0": {
+          "name": "keyword.control.sequence.alda"
+        }
+      },
+      "end": "(\\])",
+      "endCaptures": {
+        "0": {
+          "name": "keyword.control.sequence.alda"
+        }
+      },
+      "patterns": [
+        {
+          "include": "$self"
+        }
+      ]
+    },
+    {
+      "begin": "\\(",
+      "end": "\\)",
+      "patterns": [
+        {
+          "include": "source.clojure"
+        }
+      ],
+      "name": "meta.inline.clojure.alda"
+    }
+  ]
 }
