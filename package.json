@@ -3,6 +3,7 @@
     "displayName": "Alda-VsCode",
     "description": "A music programming language for musicians",
     "version": "0.0.1",
+    "icon": "./alda.png",
     "publisher": "abhi18av",
     "repository": {
         "url": "https://github.com/abhi18av/Alda-VsCode"
