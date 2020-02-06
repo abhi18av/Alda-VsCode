@@ -2,7 +2,7 @@
   "name": "alda",
   "displayName": "Alda",
   "description": "A music programming language for musicians",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "icon": "alda.png",
   "publisher": "abhi18av-vscode",
   "repository": {
